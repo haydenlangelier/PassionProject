@@ -1,7 +1,8 @@
 class CreateFriends < ActiveRecord::Migration
   def change
   	 create_table :friends do |t|
-       t.integer :user_id, :presence => true
+       t.integer :follower_id
+       t.integer :followed_id
       
     end
   end
