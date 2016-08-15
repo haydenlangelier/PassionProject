@@ -18,18 +18,28 @@ end
 
 post '/users/:user_id/friends' do 
 
-  @user = User.find(params[:user_id])
+   @user = User.find(params[:user_id])
 
-
-  @friend = User.find_by(name: params[:name])
-  @user.friends<<@friends
-
+  @friend = @user.friends.new(params[:friend])
 
   if @friend.save
     redirect "/users/#{@user.id}/friends"
   else
     erb :'friends/new' #show new friends view again(potentially displaying errors)
   end
+
+  # @user = User.find(params[:user_id])
+
+
+  # @friend = User.find_by(name: params[:name])
+  # @user.friends<<@friend
+
+
+  # if @friend.save
+  #   redirect "/users/#{@user.id}/friends"
+  # else
+  #   erb :'friends/new' #show new friends view again(potentially displaying errors)
+  # end
 
 end
 

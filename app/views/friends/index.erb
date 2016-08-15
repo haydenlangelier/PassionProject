@@ -8,9 +8,9 @@
   <ul class="entries">
     <% @user.friends.each do |friend| %>
       <li class="entry">
-        <span class="name"><%= friend %></span>
+        <span class="name"><%= friend.user.name %></span>
 
-        <ul class="entry-links">s
+        <ul class="entry-links">
           
           <li class="entry-link"><a href="<%= "/users/:user_id/friends/#{friend.id}" %>">Checkout their profile!</a></li>
 

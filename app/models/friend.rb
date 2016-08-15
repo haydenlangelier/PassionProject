@@ -1,6 +1,5 @@
 class Friend < ActiveRecord::Base
-  # Remember to create a migration!
-  # belongs_to :friend, { class_name: 'User' }
-  # belongs_to :followed, { class_name: 'User' }
   belongs_to :user
+  has_many :person_interests, :as => :person
+  has_many :interests, :through => :person_interests
 end
