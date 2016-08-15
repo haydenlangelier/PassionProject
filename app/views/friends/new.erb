@@ -1,5 +1,5 @@
 <div class="container">
-  <form action='/users/:user_id/friends' method='post'>
+  <form action='<%= "/users/#{@user.id}/friends" %>' method='post'>
    <input type="text" name="name" placeholder="Enter their name here!">
   
     

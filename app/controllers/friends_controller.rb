@@ -10,7 +10,7 @@ end
 
 get '/users/:user_id/friends/new' do 
 
-  @user = User.find(params[:user_id])
+   @user = User.find(params[:user_id])
 
   erb :'friends/new'
 
@@ -21,7 +21,7 @@ post '/users/:user_id/friends' do
   @user = User.find(params[:user_id])
 
 
-  @friend = @user.friends.new(params[:user_id])
+  @friend = @user.friends.new
 
   if @friend=User.find(name: params[:name])
     redirect "/users/#{@user.id}/friends"
