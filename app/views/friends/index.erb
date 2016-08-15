@@ -8,7 +8,7 @@
   <ul class="entries">
     <% @user.friends.each do |friend| %>
       <li class="entry">
-        <span class="name"><%=  %></span>
+        <span class="name"><%= friend %></span>
 
         <ul class="entry-links">
           
@@ -17,11 +17,11 @@
 
 
 
-          <li> Delete this person!
+          <li> 
             <form method="post" action="<%= "/users/:user_id/friends/#{friend.id}" %>">
               <input type="hidden" name="_method" value="DELETE">
-              <label for="delete_friend">Delete this friend</label>
-              <input type="submit" value="Update Entry" class="button">
+             <!--  <label for="delete_friend">Delete this friend</label> -->
+              <input type="submit" value="Delete this person" class="button">
             </form>
           </li>
 
