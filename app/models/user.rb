@@ -1,6 +1,9 @@
 class User < ActiveRecord::Base
   # Remember to create a migration!
 
+  has_many :interests, :through => :users_interests
+  has_many :friends
+
   include BCrypt
 
   # All of the BCrypt info methods you need - can be replaced by 'has_secure_password' if the user password field is 'password_digest'

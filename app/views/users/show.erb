@@ -1,6 +1,8 @@
 
 <div class="container user_show_body"><br>
 
-    <h1 class="page-header" > <%= current_user.name %>'s Profile</h1><br>
+    <h1 class="page-header" > <%= @user.name %>'s Profile</h1><br>
+
+    <%= erb(:'friends/index', layout: false, locals: { local_user: @user } ) %>
 
 </div>

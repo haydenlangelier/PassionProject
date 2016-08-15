@@ -1,0 +1,13 @@
+<div class="container">
+  <form action='<%= "/users/#{@user.id}/friends" %>' method='post'>
+   <input type="text" name="name" placeholder="Enter their name here!">
+  
+    
+    <input  type="submit" value="submit">
+  </form>
+
+  <% if @error %>
+    <%= @error %>
+  <% end %>
+
+</div>

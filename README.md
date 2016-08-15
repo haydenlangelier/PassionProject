@@ -1,1 +1,1 @@
-# Website Skeleton with User Login and Bootstrap
+# Skeleton for my Passion Project
