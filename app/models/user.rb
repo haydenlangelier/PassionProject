@@ -3,8 +3,8 @@ class User < ActiveRecord::Base
 
   has_many :interests, :through => :users_interests
   
-  has_many :friends, { class_name: "Friend", foreign_key: :follower_id }
-  has_many :friends, { class_name: "Friend", foreign_key: :followed_id }
+  has_many :followers, { class_name: "Friend", foreign_key: :follower_id }
+  has_many :followees, { class_name: "Friend", foreign_key: :followed_id }
 
 
   include BCrypt

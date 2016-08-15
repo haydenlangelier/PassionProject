@@ -21,10 +21,11 @@ post '/users/:user_id/friends' do
   @user = User.find(params[:user_id])
 
 
-  @friend = @user.friends.new
-  @friend.save
+  @friend = User.find_by(name: params[:name])
+  @user.friends<<@friends
 
-  if @friend = User.find_by(name: params[:name])
+
+  if @friend.save
     redirect "/users/#{@user.id}/friends"
   else
     erb :'friends/new' #show new friends view again(potentially displaying errors)
