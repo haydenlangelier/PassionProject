@@ -2,13 +2,13 @@
 
 <h2>Add a new friend through the link below!!!</h2>
 
-<li class="entry-link"><a href="<%= '/users/#{@user.id}/friends/new' %>">Click here for a new friend!</a></li>
+<li class="entry-link"><a href="<%= "/users/#{@user.id}/friends/new" %>">Click here for a new friend!</a></li>
 
 <main role="main">
   <ul class="entries">
-    <% @friends.each do |friend| %>
+    <% @user.friends.each do |friend| %>
       <li class="entry">
-        <span class="name"><%= friend.name %></span>
+        <span class="name"><%=  %></span>
 
         <ul class="entry-links">
           

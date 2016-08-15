@@ -22,6 +22,7 @@ post '/users/:user_id/friends' do
 
 
   @friend = @user.friends.new
+  @friend.save
 
   if @friend = User.find_by(name: params[:name])
     redirect "/users/#{@user.id}/friends"
