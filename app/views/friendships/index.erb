@@ -2,26 +2,24 @@
 
 <h2>Add a new friend through the link below!!!</h2>
 
-<li class="entry-link"><a href="<%= "/users/#{@user.id}/friends/new" %>">Click here for a new friend!</a></li>
+<li class="entry-link"><a href="<%= "/users/#{@user.id}/friendships/new" %>">Click here for a new friend!</a></li>
 
 <main role="main">
   <ul class="entries">
     <% @user.friends.each do |friend| %>
       <li class="entry">
-        <span class="name"><%= friend.user.name %></span>
+        <span class="name"><%= friend.name %></span>
 
         <ul class="entry-links">
           
-          <li class="entry-link"><a href="<%= "/users/:user_id/friends/#{friend.id}" %>">Checkout their profile!</a></li>
+          <li class="entry-link"><a href="<%= "/users/#{friend.id}" %>">Checkout their profile!</a></li>
 
 
           <li class="entry-link">See where they are at!</li>
 
 
-
-
           <li> 
-            <form method="post" action="<%= "/users/:user_id/friends/#{friend.id}" %>">
+            <form method="post" action="<%= "/users/#{@user.id}/friendships/#{friend.id}" %>">
               <input type="hidden" name="_method" value="DELETE">
              <!--  <label for="delete_friend">Delete this friend</label> -->
               <input type="submit" value="Delete this person" class="button">

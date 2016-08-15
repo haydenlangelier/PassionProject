@@ -1,0 +1,34 @@
+<h1>Here are your interests!!!!!!</h1>
+
+<h2>Add a new interest through the link below!!!</h2>
+
+ <li class="entry-link"><a href="<%= "/users/#{@user.id}/interests/new" %>">Click here for a new interest!</a></li>
+
+<main role="main">
+  <ul class="entries">
+    <% @user.interests.each do |interest| %>
+      <li class="entry">
+        <span class="name"><%= interest.interest %></span>
+
+        <ul class="entry-links">
+          
+          
+
+
+
+
+          <li> 
+            <form method="post" action="<%= "/users/:user_id/interest/#{interest.id}" %>">
+              <input type="hidden" name="_method" value="DELETE">
+              <label for="delete_friend">Delete this friend</label>
+             <input type="submit" value="Delete this person" class="button">
+            </form>
+          </li>
+
+
+
+        </ul>
+      </li>
+    <% end %>
+  </ul>
+</main> 

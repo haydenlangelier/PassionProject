@@ -1,6 +1,10 @@
 class CreatePersonInterests < ActiveRecord::Migration
   def change
-  	t.integer :user_id
-  	t.integer :interest_id
+    create_table :person_interests do |t|
+
+      t.integer :person_id
+      t.integer :interest_id
+      t.integer :person_type
+    end
   end
 end

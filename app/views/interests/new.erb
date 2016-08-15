@@ -1,0 +1,13 @@
+<div class="container">
+  <form action='<%= "/users/#{@user.id}/interests" %>' method='post'>
+   <input type="text" name="interest" placeholder="Enter your interest here!">
+  
+    
+    <input  type="submit" value="submit">
+  </form>
+
+  <% if @error %>
+    <%= @error %>
+  <% end %>
+
+</div>

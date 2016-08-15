@@ -18,12 +18,17 @@ post '/users/new' do
 end
 
 get '/users/:id' do
-  if session[:user_id]
-    @user = User.find(session[:user_id])
-  end
 
-  erb :'/users/show'
+
+
+  #gets params from url
+
+  @user = User.find(params[:id]) #define instance variable for view
+
+  erb :'users/show' #show single user view
+
 end
+  
 
 get '/users/:id/edit' do
 
