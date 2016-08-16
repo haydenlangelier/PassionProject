@@ -1,14 +1,14 @@
 $(document).ready(function() {
    // NOTE: Extra Nice *100
- //   bindListeners();
- // });
+   bindListeners();
+ });
  
  // NOTE: Nice
- // function bindListeners() {
- //   newHorseFormListener();
- //   createHorseListener();
- //   showHorseDetailListener();
- // }
+ function bindListeners() {
+   newHorseFormListener();
+   // createHorseListener();
+   // showHorseDetailListener();
+ }
  
  
  function newHorseFormListener() {
@@ -19,13 +19,13 @@ $(document).ready(function() {
        that = this
  
        var request = $.ajax({
-         url: address,
+         url: '/users/new',
          method: 'GET'
        });
  
        request.done(function(response) {
         
-         $(that).after(response)
+         $('#greeting').append(response)
        });
  
        request.fail(function(response) {
@@ -87,4 +87,4 @@ $(document).ready(function() {
  
  
  //   });
- }
+ // }
