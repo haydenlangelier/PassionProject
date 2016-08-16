@@ -5,17 +5,17 @@ $(document).ready(function() {
  
  // NOTE: Nice
  function bindListeners() {
-   newHorseFormListener();
-   // createHorseListener();
+   newRegister();
+   newLogin();
    // showHorseDetailListener();
  }
  
  
- function newHorseFormListener() {
+ function newRegister() {
    $('#register').on('click', function(event) {
        event.preventDefault();
  
-       var address = $(this).attr('href');
+       
        that = this
  
        var request = $.ajax({
@@ -24,7 +24,30 @@ $(document).ready(function() {
        });
  
        request.done(function(response) {
-        
+        $(that).remove();
+         $('#greeting').append(response)
+       });
+ 
+       request.fail(function(response) {
+         console.log("Request for form failed.")
+       })
+   });
+ }
+
+ function newLogin() {
+   $('#login').on('click', function(event) {
+       event.preventDefault();
+ 
+       
+       that = this
+ 
+       var request = $.ajax({
+         url: '/sessions/new',
+         method: 'GET'
+       });
+ 
+       request.done(function(response) {
+        $(that).remove();
          $('#greeting').append(response)
        });
  

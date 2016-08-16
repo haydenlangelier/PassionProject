@@ -1,10 +1,5 @@
 # not sure if i should have a index page for users... probably not
 
-# get '/users/new' do
-#   erb :'/users/new'
-# end
-
-
 
 get '/users/new' do
   if request.xhr?
