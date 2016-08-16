@@ -3,6 +3,11 @@
 
     <h1 class="page-header" > <%= @user.name %>'s Profile</h1><br>
 
-    <%= erb(:'friends/index', layout: false, locals: { local_user: @user } ) %>
+    <%= erb(:'friendships/index', layout: false, locals: { local_user: @user } ) %>
+
+    <%= erb(:'interests/index', layout: false, locals: { local_user: @user } ) %>
+
+   
+
 
 </div>

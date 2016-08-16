@@ -1,8 +1,14 @@
-# not sure if i should have a index page for users... probably not 
+# not sure if i should have a index page for users... probably not
+
 
 get '/users/new' do
-  erb :'/users/new'
+  if request.xhr?
+    erb :'/users/new', :layout => false
+  else
+    redirect '/users/new'
+  end
 end
+
 
 post '/users/new' do
   @user = User.new(params)
@@ -18,17 +24,22 @@ post '/users/new' do
 end
 
 get '/users/:id' do
-  if session[:user_id]
-    @user = User.find(session[:user_id])
-  end
 
-  erb :'/users/show'
+
+
+  #gets params from url
+
+  @user = User.find(params[:id]) #define instance variable for view
+
+  erb :'users/show' #show single user view
+
 end
+
 
 get '/users/:id/edit' do
 
   #im thinking about including a href in the show page that links to this
-  @user = User.find(params[:id]) 
+  @user = User.find(params[:id])
 
   erb :'users/edit' #show edit user view
 
@@ -36,13 +47,13 @@ end
 
 put '/users/:id' do
 
-  
-  @user = User.find(params[:id]) 
+
+  @user = User.find(params[:id])
 
   @user.assign_attributes(params[:user]) #assign new attributes
 
-  if @user.save 
-    redirect "/users/#{@user.id}" 
+  if @user.save
+    redirect "/users/#{@user.id}"
   else
     @error = "Sorry, you entered in some wrong information - please try again."
 

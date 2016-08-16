@@ -21,7 +21,7 @@ post '/users/:user_id/interests' do
   @user = User.find(params[:user_id])
 
   @interest = @user.interests.new(params[:interest])
-
+  @crazy=@user.interests<<interest.new(interest:params[])
   if @interest.save
     redirect "/users/#{@user.id}/interests"
   else

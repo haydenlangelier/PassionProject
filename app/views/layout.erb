@@ -57,12 +57,12 @@
           <li><a href="/users/<%= session[:user_id] %>"><%=  "#{current_user.name}".capitalize%></a></li>
         </ul>
       <% else %>
-        <ul class="nav navbar-nav navbar-right">
-          <li><a href="/sessions/new">Login</a></li>
+        <ul class="nav navbar-nav navbar-right" >
+          <li><a id="login" href="/sessions/new">Login</a></li>
         </ul>
 
-        <ul class="nav navbar-nav navbar-right">
-          <li><a href="/users/new">Register</a></li>
+        <ul class="nav navbar-nav navbar-right" >
+          <li><a id="register" href="/users/new">Register</a></li>
         </ul>
       <% end %>
     </div><!-- /.navbar-collapse -->

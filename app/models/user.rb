@@ -1,10 +1,12 @@
 class User < ActiveRecord::Base
-  # Remember to create a migration!
 
-  has_many :interests, :through => :users_interests
-  
-  has_many :friends, { class_name: "Friend", foreign_key: :follower_id }
-  has_many :friends, { class_name: "Friend", foreign_key: :followed_id }
+
+  has_many :friendships
+  has_many :friends, :through => :friendships
+  has_many :inverse_friendships, :class_name => "Friendship", :foreign_key => "friend_id"
+  has_many :inverse_friends, :through => :inverse_friendships, :source => :user
+  has_many :person_interests, :as => :person
+  has_many :interests, :through => :person_interests
 
 
   include BCrypt
@@ -30,4 +32,3 @@ class User < ActiveRecord::Base
   end
 
 end
-
