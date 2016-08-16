@@ -1,5 +1,5 @@
-get '/friendships' do 
-puts "christmas 1"
+get '/friendships' do
+  puts "christmas 1"
   @user = current_user
 
   @friendships = @user.friendships
@@ -17,25 +17,51 @@ get '/friendships/new' do
   end
 end
 
-post '/users/:user_id/friendships' do 
+post '/users/:user_id/friendships' do
 
   @user = User.find(params[:user_id])
 
   @friend=User.find_by(name:params[:name])
 
- 
+
 
   if @friend
       @friendship = @user.friends<<@friend if !@user.friends.include?(@friend)
-    redirect "/users/#{@user.id}/friendships"
+    redirect "/users/#{@user.id}"
   else
     erb :'friendships/new' #show new friendships view again(potentially displaying errors)
   end
 
 end
 
-get '/users/:user_id/friendships/:id' do 
-puts "christmas 3"
+# post '/users/:user_id/friendships' do
+
+#   @user = User.find(params[:user_id])
+
+#   @friend=User.find_by(name:params[:name])
+
+#   if request.xhr?
+#     if @friend
+#       @friendship = @user.friends<<@friend if !@user.friends.include?(@friend)
+#       erb :'friendships/new', :layout => false
+#     else
+#       erb :'friendships/new' #show new friendships view again(potentially displaying errors)
+#     end
+    
+#   else
+#     if @friend
+#       @friendship = @user.friends<<@friend if !@user.friends.include?(@friend)
+#       redirect "/users/#{@user.id}/friendships"
+#     else
+#       erb :'friendships/new' #show new friendships view again(potentially displaying errors)
+#     end
+    
+#   end
+
+# end
+
+get '/users/:user_id/friendships/:id' do
+  puts "christmas 3"
   @user = User.find(params[:user_id])
 
   @friendship = @user.friendships.find(params[:id])
@@ -44,7 +70,7 @@ puts "christmas 3"
 
 end
 
-delete '/users/:user_id/friendships/:id' do 
+delete '/users/:user_id/friendships/:id' do
 
   @user = User.find(params[:user_id])
 
@@ -52,6 +78,6 @@ delete '/users/:user_id/friendships/:id' do
 
   @user.friends.destroy(@friendship)
 
-  redirect "/users/#{@user.id}/friendships"
+  redirect "/users/#{@user.id}"
 
 end

@@ -1,13 +1,15 @@
 $(document).ready(function() {
-   // NOTE: Extra Nice *100
+   
    bindListeners();
  });
  
- // NOTE: Nice
+ 
  function bindListeners() {
    newRegister();
    newLogin();
    newFriend();
+   // createSubmit();
+
  }
  
  
@@ -87,36 +89,36 @@ $(document).ready(function() {
  }
  
  
- // function createHorseListener() {
- //   $(".container").on("submit", "#horse-form", function(event) {
- //     event.preventDefault();
+ function createSubmit() {
+   $(".container").on("submit", "#raptor", function(event) {
+     event.preventDefault();
  
- //     var address = $(this).attr('action');
- //     var method = $(this).attr('method');
- //     var data = $(this).serialize();
- //     that = this
+     var address = $(this).attr('action');
+     var method = $(this).attr('method');
+     var data = $(this).serialize();
+     that = this
  
- //     var request = $.ajax({
- //       url: address,
- //       method: method,
- //       data: data
- //     });
+     var request = $.ajax({
+       url: address,
+       method: method,
+       data: data
+     });
  
- //     request.done(function(response) {
- //       $('#new-horse-form-container').remove();
- //       $('#horse-list').append(response);
- //     });
+     request.done(function(response) {
+       $('#raptor').remove();
+       $('.entries').append(response);
+     });
  
- //     request.fail(function(response) {
- //       console.log("Failed to create new horse.");
- //     })
- 
- 
- //   });
- // }
+     request.fail(function(response) {
+       console.log("Failed to create new friend.");
+     })
  
  
- // function showHorseDetailListener() {
+   });
+ }
+ 
+ 
+ // function () {
  //   $("#horse-list a").on("click", function(event) {
  //     event.preventDefault();
  
