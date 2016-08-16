@@ -1,8 +1,18 @@
 # not sure if i should have a index page for users... probably not 
 
+# get '/users/new' do 
+#   erb :'/users/new'
+# end
+
+
+
 get '/users/new' do
-  erb :'/users/new'
+  if request.xhr?
+  erb :'/users/new', :layout => false
+else
+  redirect '/users/new'
 end
+
 
 post '/users/new' do
   @user = User.new(params)
