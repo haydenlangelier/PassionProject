@@ -7,7 +7,7 @@ $(document).ready(function() {
  function bindListeners() {
    newRegister();
    newLogin();
-   // showHorseDetailListener();
+   newFriend();
  }
  
  
@@ -49,6 +49,35 @@ $(document).ready(function() {
        request.done(function(response) {
         $(that).remove();
          $('#greeting').append(response)
+       });
+ 
+       request.fail(function(response) {
+         console.log("Request for form failed.")
+       })
+   });
+ }
+
+ function newFriend() {
+   $('.new_friend').on('click', function(event) {
+      
+
+       event.preventDefault();
+ 
+       
+       
+       var address = $(this).attr('href');
+
+       console.log('url', address)
+       that = this
+ 
+       var request = $.ajax({
+         url: address,
+         method: 'GET'
+       });
+ 
+       request.done(function(response) {
+        $(that).remove();
+         $('#rat').after(response)
        });
  
        request.fail(function(response) {

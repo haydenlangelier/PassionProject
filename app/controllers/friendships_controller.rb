@@ -1,6 +1,6 @@
-get '/users/:user_id/friendships' do 
-
-  @user = User.find(params[:user_id])
+get '/friendships' do 
+puts "christmas 1"
+  @user = current_user
 
   @friendships = @user.friendships
 
@@ -8,12 +8,13 @@ get '/users/:user_id/friendships' do
 
 end
 
-get '/users/:user_id/friendships/new' do 
-
-  @user = User.find(params[:user_id])
-
-  erb :'friendships/new'
-
+get '/friendships/new' do
+  @user = current_user
+  if request.xhr?
+    erb :'friendships/new', :layout => false
+  else
+    redirect 'friendships/new'
+  end
 end
 
 post '/users/:user_id/friendships' do 
@@ -34,7 +35,7 @@ post '/users/:user_id/friendships' do
 end
 
 get '/users/:user_id/friendships/:id' do 
-
+puts "christmas 3"
   @user = User.find(params[:user_id])
 
   @friendship = @user.friendships.find(params[:id])
