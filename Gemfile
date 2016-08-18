@@ -7,6 +7,7 @@ gem 'pg'
 gem 'sinatra'
 gem 'sinatra-contrib'
 gem 'dotenv'
+gem 'dotenv-rails'
 
 gem 'activesupport', '~>4.2.0'
 gem 'activerecord', '~>4.2.0'
