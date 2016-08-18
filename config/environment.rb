@@ -22,6 +22,8 @@ require 'erb'
 
 require 'faker' if development?
 require 'bcrypt'
+require 'dotenv'
+Dotenv.load
 
 # Some helper constants for path-centric logic
 APP_ROOT = Pathname.new(File.expand_path('../../', __FILE__))
