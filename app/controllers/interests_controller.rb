@@ -31,9 +31,10 @@ end
 delete '/interests/:id' do
   @user = current_user
   #get params from url
-  @interest = @user.interests.find(params[:id])
+  @interest = Interest.find(params)
+  @interest.destroy
 
-  @user.interests.destroy(@interest)
+  # @user.interests.destroy(@interest)
 
   redirect '/users/#{@user.id}' #redirect back to interests index page
 
