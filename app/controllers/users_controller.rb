@@ -26,7 +26,9 @@ end
 get '/users/:id' do
 
 
-
+puts "$$$$$$$$$$$$$$$$$$$$$$$$$$"
+puts "$HERE"
+puts "$$$$$$$$$$$$$$$$$$$$$$$$$$"
   #gets params from url
 
   @user = User.find(params[:id]) #define instance variable for view
