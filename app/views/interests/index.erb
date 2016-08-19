@@ -1,8 +1,8 @@
-<h1>Here are your interests!!!!!!</h1>
+<div id="interest"><h1>Here are your interests!!!!!!</h1>
 
 <h2>Add a new interest through the link below!!!</h2>
 
- <li class="entry-link"><a href="<%= "/users/#{@user.id}/interests/new" %>">Click here for a new interest!</a></li>
+ <li class="entry-link"><a href="<%= "/interests/new" %>">Click here for a new interest!</a></li>
 
 <main role="main">
   <ul class="entries">
@@ -12,23 +12,15 @@
 
         <ul class="entry-links">
           
-          
-
-
-
-
           <li> 
-            <form method="post" action="<%= "/users/:user_id/interest/#{interest.id}" %>">
+            <form method="post" action="<%= "/interests/#{@user.id}" %>">
               <input type="hidden" name="_method" value="DELETE">
-              <label for="delete_friend">Delete this friend</label>
-             <input type="submit" value="Delete this person" class="button">
+              
+             <input type="submit" value="Delete this interest" class="button">
             </form>
           </li>
-
-
-
         </ul>
       </li>
     <% end %>
   </ul>
-</main> 
+</main> </div>

@@ -1,43 +1,43 @@
-get '/users/:user_id/interests' do 
+get '/interests' do
+  @user = current_user
+  @interests = Interest.all #define instance variable for view
 
-  @user = User.find(params[:user_id])
-
-  @interests = @user.interests
-
-  erb :'interests/index'
+  erb :'interests/index' #show all interests view (index)
 
 end
 
-get '/users/:user_id/interests/new' do 
-
-  @user = User.find(params[:user_id])
-
-  erb :'interests/new'
+get '/interests/new' do
+  @user = current_user
+  erb :'interests/new' #show new interests view
 
 end
 
-post '/users/:user_id/interests' do 
+post '/interests' do
+  @user = current_user
 
-  @user = User.find(params[:user_id])
+  #below works with properly formatted params in HTML form
+  @interest = Interest.new(params) #create new interest
 
-  @interest = @user.interests.new(params[:interest])
-  @crazy=@user.interests<<interest.new(interest:params[])
-  if @interest.save
-    redirect "/users/#{@user.id}/interests"
+  if @interest.save #saves new interest or returns false if unsuccessful
+    @user.interests<<@interest if !@user.interests.include?(@interest)
+    redirect "/users/#{@user.id}" #redirect back to interests index page
   else
-    erb :'interests/new' #show new interests view again(potentially displaying errors)
+    erb :'interests/new' # show new interests view again(potentially displaying errors)
   end
 
 end
 
-delete '/users/:user_id/interests/:id' do 
 
-  @user = User.find(params[:user_id])
-
+delete '/interests/:id' do
+  @user = current_user
+  #get params from url
   @interest = @user.interests.find(params[:id])
 
-  @interest.destroy
+  @user.interests.destroy(@interest)
 
-  redirect "/users/#{@user.id}/interests"
+  redirect '/users/#{@user.id}' #redirect back to interests index page
 
 end
+
+
+
